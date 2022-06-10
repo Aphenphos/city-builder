@@ -1,1 +1,30 @@
 /* add css for index.html */
+
+#inputs {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#display {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.Tundra-class {
+    background:url('/assets/Tundra.gif')
+}
+
+.Desert-class {
+    background:url('/assets/Desert.gif')
+}
+
+.Snowy-class {
+    background:url('/assets/Snowy.gif')
+}
+
+.Tropical-class {
+    background:url('/assets/Tropical.gif')
+}
+

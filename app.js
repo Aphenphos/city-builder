@@ -8,12 +8,26 @@ function defaultCity() {
     return defaultCity;
 }
 
+const cityDefault = document.getElementById('city-selector');
+const cityDefaultImage = document.getElementById('city-image-display');
+const cityArchitectureDisplay = document.getElementById('city-architecture-display');
+
+cityDefault.addEventListener('change', () => {
+    displayDefaultCity();
+});
+
+function displayDefaultCity() {
+    cityDefaultImage.src = '/assets/' + cityDefault.value + '.jpg';
+    console.log(cityDefaultImage.src);
+}
+
 let city = defaultCity();
 const citiesAndSlogans = [];
 
 
 
 const display = document.getElementById('display');
+var cityDisplay = document.getElementById('city-image-display');
 
 
 
@@ -36,6 +50,7 @@ cityName.addEventListener('input', () => {
     displayInputs();
 });
 
+
 citySlogan.addEventListener('input', () => {
     city.slogan = citySlogan.value;
     console.log(city.slogan);
@@ -45,6 +60,7 @@ citySlogan.addEventListener('input', () => {
 
 cityEnvironmentSelector.addEventListener('change', () => {
     city.environment = cityEnvironmentSelector.value;
+    cityDisplay.classList.add(`${city.environment}-class`);
     console.log(city.environment);
     displayCitiesAndSlogans();
     displayInputs();
@@ -52,7 +68,9 @@ cityEnvironmentSelector.addEventListener('change', () => {
 
 cityArchitectureSelector.addEventListener('change', () => {
     city.architecture = cityArchitectureSelector.value;
+    cityArchitectureDisplay.src = '/assets/' + city.architecture + '.jpg';
     console.log(city.architecture);
+    console.log(cityArchitectureDisplay);
     displayCitiesAndSlogans();
     displayInputs();
 });
@@ -89,6 +107,6 @@ function displayCitiesAndSlogans() {
 
 }
 
-
+displayDefaultCity();
 displayCitiesAndSlogans();
 displayInputs();
