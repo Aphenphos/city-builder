@@ -12,14 +12,52 @@
     <title>Web UI Project</title>
 </head>
 
-<body>
+<body class="Tundra-class">
     <header>
         <img src="assets/html_css_js.png">
         <h1>Web UI Project</h1>
     </header>
-
+    <div id='inputs'>
+        <label>Your City Name
+        <input id="user-city-name" type="text" placeholder="Enter Your City Name"></input>
+        </label>
+        <label>Your City Slogan
+        <input id="user-city-slogan" type="text" placeholder="Enter Your City Slogan"></input>
+        </label>
+        <button id="submit-new-city">Add City</button>
+        <button id="submit-new-slogan">Add Slogan</button>
+    <label>City:
+        <select id="city-selector">
+            <option value ='Rome'>Rome</option>
+            <option value ='Reykjavik'>Reykjavik</option>
+            <option value ='Sahara'>Sahara</option>
+            <option value ='Patagonia'>Patagonia</option>
+        </select>  
+    <label>Environment:
+        <select id="city-environment">
+            <option value ='Tundra'>Tundra</option>
+            <option value ='Tropical'>Tropical</option>
+            <option value ='Snowy'>Snowy</option>
+            <option value ='Desert'>Desert</option>
+        </select>  
+    <label>Architecture:
+        <select id="city-architecture">
+            <option value ='Gothic'>Gothic</option>
+            <option value ='Modern'>Modern</option>
+            <option value ='Romanesque'>Romanesque</option>
+        </select>  
+    </label>      
+    </div>
     <main>
+    <div id="display">
+        <img id='city-image-display'>
+        <img id ='city-architecture-display'>
+    </div>
+    <div id="added-cities">
+        <table id="ul">
 
+        </table>
+    </div>
     </main>
 
     <footer>&copy;2021 Aspiring Software Developer</footer>
