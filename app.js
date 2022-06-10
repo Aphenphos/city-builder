@@ -1,7 +1,7 @@
 function defaultCity() {
     const defaultCity = {
         name: 'Sahara',
-        slogan: 'This place is dope.',
+        slogans: [],
         environment: 'Tropical',
         architecture: 'Romanesque'
     };
@@ -22,11 +22,11 @@ function displayDefaultCity() {
 }
 
 let city = defaultCity();
-const citiesAndSlogans = [];
+const cities = [];
+const slogans = [];
+var slogan = '';
 
 
-
-const display = document.getElementById('display');
 var cityDisplay = document.getElementById('city-image-display');
 
 
@@ -38,7 +38,7 @@ var cityArchitectureSelector = document.getElementById('city-architecture');
 
 function displayInputs() {
     cityName.value = city.name;
-    citySlogan.value = city.slogan;
+    citySlogan.value = slogan;
     cityEnvironmentSelector.value = city.environment;
     cityArchitectureSelector.value = city.architecture;
 }
@@ -51,9 +51,9 @@ cityName.addEventListener('input', () => {
 
 
 citySlogan.addEventListener('input', () => {
-    city.slogan = citySlogan.value;
-    console.log(city.slogan);
+    slogan = citySlogan.value;
     displayInputs();
+    console.log(slogan);
 });
 
 cityEnvironmentSelector.addEventListener('change', () => {
@@ -73,19 +73,32 @@ cityArchitectureSelector.addEventListener('change', () => {
 
 const submitNewCity = document.getElementById('submit-new-city');
 submitNewCity.addEventListener('click', () => {
-    citiesAndSlogans.push(city);
-    displayCitiesAndSlogans();
+    cities.push(city);
+    displayCities();
     console.log(city);
+});
+
+const submitNewSlogan = document.getElementById('submit-new-slogan');
+submitNewSlogan.addEventListener('click', () => {
+    city.slogans.push(slogan);
+    console.log(slogan);
+    console.log(slogans);
+    displayCities();
 });
 
 
 const list = document.getElementById('ul');
 console.log(list);
 
-function displayCitiesAndSlogans() {
-    for (const city of citiesAndSlogans) {
+let cityName = document.createElement('h1');
+let citySlogan = document.createElement('h2');
+let cityEnvironment = document.createElement('h3');
+let cityArchitecture = document.createElement('h3');
 
-        const li = document.createElement('td');
+function displayCities() {
+    for (const city of cities) {
+
+        const li = document.createElement('li');
         const cityName = document.createElement('h1');
         cityName.textContent = city.name;
         const citySlogan = document.createElement('h2');
@@ -98,11 +111,11 @@ function displayCitiesAndSlogans() {
         li.append(cityName, citySlogan, cityEnvironment, cityArchitecture);
         list.append(li);
         displayInputs();
-        console.log(citiesAndSlogans);
         console.log(list);
     }
 
 }
 
 displayDefaultCity();
+displayCities();
 displayInputs();
