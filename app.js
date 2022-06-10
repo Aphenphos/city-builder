@@ -1,6 +1,6 @@
 function defaultCity() {
     const defaultCity = {
-        name: 'Sahara',
+        name: '',
         slogans: [],
         environment: 'Tropical',
         architecture: 'Romanesque'
@@ -18,13 +18,14 @@ cityDefault.addEventListener('change', () => {
 
 function displayDefaultCity() {
     cityDefaultImage.src = '/assets/' + cityDefault.value + '.jpg';
+    cityArchitectureDisplay.src = '/assets/' + city.architecture + '.jpg';
     console.log(cityDefaultImage.src);
 }
 
 let city = defaultCity();
+let slogan = '';
 const cities = [];
-const slogans = [];
-var slogan = '';
+var slogans = [];
 
 
 var cityDisplay = document.getElementById('city-image-display');
@@ -58,6 +59,7 @@ citySlogan.addEventListener('input', () => {
 
 cityEnvironmentSelector.addEventListener('change', () => {
     city.environment = cityEnvironmentSelector.value;
+    cityDisplay.removeAttribute('class');
     cityDisplay.classList.add(`${city.environment}-class`);
     console.log(city.environment);
     displayInputs();
@@ -73,47 +75,51 @@ cityArchitectureSelector.addEventListener('change', () => {
 
 const submitNewCity = document.getElementById('submit-new-city');
 submitNewCity.addEventListener('click', () => {
-    cities.push(city);
-    displayCities();
-    console.log(city);
+    if (city.name !== '') {
+        cities.push(city);
+        displayCities();
+        console.log(city);
+        city = defaultCity();
+        slogans = [];
+    } else {window.alert('Must enter a city name!');} 
 });
 
 const submitNewSlogan = document.getElementById('submit-new-slogan');
 submitNewSlogan.addEventListener('click', () => {
-    city.slogans.push(slogan);
-    console.log(slogan);
-    console.log(slogans);
-    displayCities();
+    slogans.push(slogan);
 });
 
 
 const list = document.getElementById('ul');
 console.log(list);
 
-let cityName = document.createElement('h1');
-let citySlogan = document.createElement('h2');
-let cityEnvironment = document.createElement('h3');
-let cityArchitecture = document.createElement('h3');
+
+let li = document.createElement('li');
+let displayCityName = document.createElement('td');
+let displayCitySlogan = document.createElement('td');
+let cityEnvironment = document.createElement('td');
+let cityArchitecture = document.createElement('td');
 
 function displayCities() {
     for (const city of cities) {
-
-        const li = document.createElement('li');
-        const cityName = document.createElement('h1');
-        cityName.textContent = city.name;
-        const citySlogan = document.createElement('h2');
-        citySlogan.textContent = city.slogan;
-        const cityEnvironment = document.createElement('h3');
+        
+        li = document.createElement('li');
+        displayCityName = document.createElement('td');
+        displayCityName.textContent = city.name;
+        displayCitySlogan = document.createElement('td');
+        displayCitySlogan.textContent = slogans;
+        cityEnvironment = document.createElement('td');
         cityEnvironment.textContent = city.environment;
-        const cityArchitecture = document.createElement('h3');
+        cityArchitecture = document.createElement('td');
         cityArchitecture.textContent = city.architecture;
+        li.classList.add(`${city.architecture}-class`);
 
-        li.append(cityName, citySlogan, cityEnvironment, cityArchitecture);
-        list.append(li);
-        displayInputs();
-        console.log(list);
     }
-
+    li.append(displayCityName, displayCitySlogan, cityEnvironment, cityArchitecture);
+    list.append(li);
+    displayInputs();
+    console.log(list);
+    city = defaultCity();
 }
 
 displayDefaultCity();

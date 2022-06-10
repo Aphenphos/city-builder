@@ -8,4 +8,6 @@ enviornment-menu changes enviornment
 city-name-lists
 city-slogan inputs
 
+City + Slogans + Architecture + Environment for list items
+
 
