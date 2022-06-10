@@ -12,6 +12,25 @@
     width: 100%;
 }
 
+#city-image-display {
+    height: 300px;
+    width: 300px;
+}
+
+#city-architecture-display {
+    height: 300px;
+    width: 300px;
+}
+
+#added-cities {
+    display: grid;
+    max-width: 100%;
+    width: 100%;
+    height: 50%;
+    border: solid 5px black;
+}
+
+
 .Tundra-class {
     background:url('/assets/Tundra.gif')
 }
@@ -27,4 +46,3 @@
 .Tropical-class {
     background:url('/assets/Tropical.gif')
 }
-

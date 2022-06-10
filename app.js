@@ -46,7 +46,6 @@ function displayInputs() {
 cityName.addEventListener('input', () => {
     city.name = cityName.value;
     console.log(city.name);
-    displayCitiesAndSlogans();
     displayInputs();
 });
 
@@ -54,7 +53,6 @@ cityName.addEventListener('input', () => {
 citySlogan.addEventListener('input', () => {
     city.slogan = citySlogan.value;
     console.log(city.slogan);
-    displayCitiesAndSlogans();
     displayInputs();
 });
 
@@ -62,7 +60,6 @@ cityEnvironmentSelector.addEventListener('change', () => {
     city.environment = cityEnvironmentSelector.value;
     cityDisplay.classList.add(`${city.environment}-class`);
     console.log(city.environment);
-    displayCitiesAndSlogans();
     displayInputs();
 });
 
@@ -71,24 +68,24 @@ cityArchitectureSelector.addEventListener('change', () => {
     cityArchitectureDisplay.src = '/assets/' + city.architecture + '.jpg';
     console.log(city.architecture);
     console.log(cityArchitectureDisplay);
-    displayCitiesAndSlogans();
     displayInputs();
 });
 
 const submitNewCity = document.getElementById('submit-new-city');
 submitNewCity.addEventListener('click', () => {
     citiesAndSlogans.push(city);
+    displayCitiesAndSlogans();
     console.log(city);
 });
 
 
-const list = display.querySelector('ul');
+const list = document.getElementById('ul');
+console.log(list);
 
 function displayCitiesAndSlogans() {
-    list.innerHTML = '';
     for (const city of citiesAndSlogans) {
 
-        const li = document.createElement('li');
+        const li = document.createElement('td');
         const cityName = document.createElement('h1');
         cityName.textContent = city.name;
         const citySlogan = document.createElement('h2');
@@ -99,14 +96,13 @@ function displayCitiesAndSlogans() {
         cityArchitecture.textContent = city.architecture;
 
         li.append(cityName, citySlogan, cityEnvironment, cityArchitecture);
-        list.push(li);
-        displayCitiesAndSlogans();
+        list.append(li);
         displayInputs();
-        console.log(city);
+        console.log(citiesAndSlogans);
+        console.log(list);
     }
 
 }
 
 displayDefaultCity();
-displayCitiesAndSlogans();
 displayInputs();
