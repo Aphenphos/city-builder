@@ -49,15 +49,11 @@ td {
 }
 
 .Tundra-class {
-    z-index: 0;
-    background-image:url('/assets/Tundra.gif') repeat 0 0;
-    height: 900px;
-    width: 900px;
-
+    background-image:url('/assets/Tundra.gif');
 }
 
 .Desert-class {
-    background-image:url('/assets/Desert.gif')
+    background-image:url('/assets/Desert.gif');
 }
 
 .Snowy-class {
@@ -68,14 +64,14 @@ td {
     background-image:url('/assets/Tropical.gif')
 }
 
-.gothic-class {
-    font-family: 'Franklin Gothic Medium';
+.Gothic-class {
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.modern-class {
-    font-family:'Trebuchet MS';
+.Modern-class {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.romanesque-class {
-    font-family: Impact;
+.Romanesque-class {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

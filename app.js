@@ -1,8 +1,10 @@
+
+
 function defaultCity() {
     const defaultCity = {
         name: '',
         slogans: [],
-        environment: 'Tropical',
+        environment: 'Tundra',
         architecture: 'Romanesque'
     };
     return defaultCity;
@@ -19,7 +21,7 @@ cityDefault.addEventListener('change', () => {
 function displayDefaultCity() {
     cityDefaultImage.src = '/assets/' + cityDefault.value + '.jpg';
     cityArchitectureDisplay.src = '/assets/' + city.architecture + '.jpg';
-    console.log(cityDefaultImage.src);
+
 }
 
 let city = defaultCity();
@@ -28,14 +30,10 @@ const cities = [];
 var slogans = [];
 
 
-var cityDisplay = document.getElementById('city-image-display');
-
-
-
 const cityName = document.getElementById('user-city-name');
 const citySlogan = document.getElementById('user-city-slogan');
 const cityEnvironmentSelector = document.getElementById('city-environment');
-var cityArchitectureSelector = document.getElementById('city-architecture');
+const cityArchitectureSelector = document.getElementById('city-architecture');
 
 function displayInputs() {
     cityName.value = city.name;
@@ -46,7 +44,6 @@ function displayInputs() {
 
 cityName.addEventListener('input', () => {
     city.name = cityName.value;
-    console.log(city.name);
     displayInputs();
 });
 
@@ -54,22 +51,18 @@ cityName.addEventListener('input', () => {
 citySlogan.addEventListener('input', () => {
     slogan = citySlogan.value;
     displayInputs();
-    console.log(slogan);
 });
 
 cityEnvironmentSelector.addEventListener('change', () => {
     city.environment = cityEnvironmentSelector.value;
-    cityDisplay.removeAttribute('class');
-    cityDisplay.classList.add(`${city.environment}-class`);
-    console.log(city.environment);
+    document.body.removeAttribute('class');
+    document.body.classList.add(`${city.environment}-class`);
     displayInputs();
 });
 
 cityArchitectureSelector.addEventListener('change', () => {
     city.architecture = cityArchitectureSelector.value;
     cityArchitectureDisplay.src = '/assets/' + city.architecture + '.jpg';
-    console.log(city.architecture);
-    console.log(cityArchitectureDisplay);
     displayInputs();
 });
 
@@ -78,7 +71,6 @@ submitNewCity.addEventListener('click', () => {
     if (city.name !== '') {
         cities.push(city);
         displayCities();
-        console.log(city);
         city = defaultCity();
         slogans = [];
     } else {window.alert('Must enter a city name!');} 
@@ -91,7 +83,6 @@ submitNewSlogan.addEventListener('click', () => {
 
 
 const list = document.getElementById('ul');
-console.log(list);
 
 
 let li = document.createElement('li');
@@ -106,8 +97,10 @@ function displayCities() {
         li = document.createElement('li');
         displayCityName = document.createElement('td');
         displayCityName.textContent = city.name;
-        displayCitySlogan = document.createElement('td');
-        displayCitySlogan.textContent = slogans;
+        if (slogan !== ''){
+            displayCitySlogan = document.createElement('td');
+            displayCitySlogan.textContent = slogans;
+        }
         cityEnvironment = document.createElement('td');
         cityEnvironment.textContent = city.environment;
         cityArchitecture = document.createElement('td');
@@ -118,10 +111,8 @@ function displayCities() {
     li.append(displayCityName, displayCitySlogan, cityEnvironment, cityArchitecture);
     list.append(li);
     displayInputs();
-    console.log(list);
     city = defaultCity();
 }
-
 displayDefaultCity();
 displayCities();
 displayInputs();
