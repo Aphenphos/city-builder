@@ -73,12 +73,15 @@ submitNewCity.addEventListener('click', () => {
         displayCities();
         city = defaultCity();
         slogans = [];
+        city.name = '';
+        displayInputs();
     } else {window.alert('Must enter a city name!');} 
 });
 
 const submitNewSlogan = document.getElementById('submit-new-slogan');
 submitNewSlogan.addEventListener('click', () => {
     slogans.push(slogan);
+    citySlogan.value = '';
 });
 
 
