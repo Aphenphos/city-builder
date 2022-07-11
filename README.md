@@ -1,3 +1,5 @@
+[WireFrame](assets\wireframe.png)
+
 city-name-display changes upon changing cities. 
 city-iamge-display changes upon changing cities.
 city-slogan-display changes respective to its current city.
